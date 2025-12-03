@@ -45,7 +45,7 @@ Ensure you have the following installed:
 * An **AWS Account** (S3 Bucket created)
 * A **Snowflake Account** (Standard or Trial)
 * A **Spotify Developer Account** (to get API keys)
-* 
+
 
 ### 2. Clone the Repository
 ```bash
