@@ -17,26 +17,43 @@ The pipeline is fully automated using **GitHub Actions**, running on a daily sch
 
 The pipeline follows a modern data stack architecture:
 
-```mermaid
-graph LR
+```graph LR
     A[Spotify API] -->|Extract (Python/Spotipy)| B(GitHub Actions Runner)
     B -->|Transform & Clean| B
     B -->|Load CSV| C[AWS S3 Bucket]
     C -->|Auto-Ingest / Copy Into| D[Snowflake Data Warehouse]
     D -->|Direct Query| E[Power BI Dashboard]
+```
 
----
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Tools
 
-| Component | Technology |
-| :--- | :--- |
-| **Language** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) |
-| **Cloud** | ![AWS](https://img.shields.io/badge/AWS_S3-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white) |
-| **Warehouse** | ![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white) |
-| **Orchestration** | ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white) |
-| **Visualization** | ![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=power-bi&logoColor=black) |
-| **Libraries** | `pandas`, `spotipy`, `boto3` |
+| Component | Tool | Description & Usage |
+| :--- | :--- | :--- |
+| **Scripting** | **Python 3.9** | Used for API extraction (Spotipy) and data transformation (Pandas). |
+| **Data Lake** | **AWS S3** | Stores raw `.csv` files extracted from Spotify before processing. |
+| **Warehouse** | **Snowflake** | Serves as the central repository; auto-ingests data from S3 using Snowpipe. |
+| **Automation** | **GitHub Actions** | Orchestrates the ETL pipeline to run daily at 6:00 AM via CRON jobs. |
+| **Viz** | **Power BI** | Connects to Snowflake via Direct Query to visualize artist popularity trends. |
 
----
+
+## 🚀 Setup & Installation
+
+Follow these steps to set up the project locally.
+
+### 1. Prerequisites
+Ensure you have the following installed:
+* **Python 3.9+**
+* **Git**
+* An **AWS Account** (S3 Bucket created)
+* A **Snowflake Account** (Standard or Trial)
+* A **Spotify Developer Account** (to get API keys)
+
+### 2. Clone the Repository
+```bash
+git clone [https://github.com/YOUR_USERNAME/spotify-etl-pipeline.git](https://github.com/YOUR_USERNAME/spotify-etl-pipeline.git)
+cd spotify-etl-pipeline
+```
+
+
 
 
