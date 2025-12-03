@@ -24,6 +24,7 @@ The pipeline follows a modern data stack architecture:
     C -->|Auto-Ingest / Copy Into| D[Snowflake Data Warehouse]
     D -->|Direct Query| E[Power BI Dashboard]
 ```
+---
 
 ## 🛠️ Tech Stack & Tools
 
@@ -33,8 +34,9 @@ The pipeline follows a modern data stack architecture:
 | **Data Lake** | **AWS S3** | Stores raw `.csv` files extracted from Spotify before processing. |
 | **Warehouse** | **Snowflake** | Serves as the central repository; auto-ingests data from S3 using Snowpipe. |
 | **Automation** | **GitHub Actions** | Orchestrates the ETL pipeline to run daily at 6:00 AM via CRON jobs. |
-| **Viz** | **Power BI** | Connects to Snowflake via Direct Query to visualize artist popularity trends. |
+| **Vizualization** | **Power BI** | Connects to Snowflake via Direct Query to visualize artist popularity trends. |
 
+---
 
 ## 🚀 Setup & Installation
 
@@ -47,12 +49,45 @@ Ensure you have the following installed:
 * An **AWS Account** (S3 Bucket created)
 * A **Snowflake Account** (Standard or Trial)
 * A **Spotify Developer Account** (to get API keys)
+* 
 
 ### 2. Clone the Repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/spotify-etl-pipeline.git](https://github.com/YOUR_USERNAME/spotify-etl-pipeline.git)
+git clone [https://github.com/dipti513/spotify-etl-pipeline.git]
 cd spotify-etl-pipeline
 ```
+
+### 3. Setup Virtual Environment
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+### 4. 4. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Configure Environment Variables
+```
+# Spotify API Keys
+SPOTIFY_CLIENT_ID=your_spotify_client_id_here
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret_here
+
+# AWS Credentials
+AWS_ACCESS_KEY_ID=your_aws_access_key_here
+AWS_SECRET_ACCESS_KEY=your_aws_secret_key_here
+AWS_BUCKET_NAME=your_unique_bucket_name
+AWS_REGION=us-east-1
+```
+
+### 6. Run the pipeline
+```bash
+python run_pipeline.py
+```
+
+
+
 
 
 
