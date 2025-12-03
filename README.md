@@ -17,12 +17,8 @@ The pipeline is fully automated using **GitHub Actions**, running on a daily sch
 
 The pipeline follows a modern data stack architecture:
 
-```graph LR
-    A[Spotify API] -->|Extract (Python/Spotipy)| B(GitHub Actions Runner)
-    B -->|Transform & Clean| B
-    B -->|Load CSV| C[AWS S3 Bucket]
-    C -->|Auto-Ingest / Copy Into| D[Snowflake Data Warehouse]
-    D -->|Direct Query| E[Power BI Dashboard]
+```
+[Spotify API] --> (Python Script) --> [AWS S3 Bucket] --> (Snowpipe) --> [Snowflake DB] --> [Power BI]
 ```
 ---
 
