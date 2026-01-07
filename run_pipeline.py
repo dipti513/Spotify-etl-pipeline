@@ -2,12 +2,6 @@ from src.extract import extract_spotify_data
 from src.load_s3 import upload_to_s3
 
 if __name__ == "__main__":
-    # Step 1: Extract
-    data = extract_spotify_data()
-    from src.extract import extract_spotify_data
-from src.load_s3 import upload_to_s3
-
-if __name__ == "__main__":
     print("🚀 Starting ETL Pipeline...")
     
     # Step 1: Extract
